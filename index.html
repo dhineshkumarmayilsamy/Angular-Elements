@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Angular Elements Example</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="dist/styles.css">
+
+    <style>
+        .content {
+            position: absolute;
+            display: flex;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+
+        <heart-btn id="heart1"></heart-btn>
+        <p>Current value: <span id="val"></span> </p>
+
+    </div>
+
+    <!--Include zone.min.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zone.js/0.11.4/zone.min.js"
+        integrity="sha512-cmSURwvMAS9N0/1/OP78yF5I4yVFW/iDH07xeSb2OTDeE3cfGWtQGxm4EwRrOKuMXP48kL546L3i+7jouj70xw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript" src="dist/main.js" defer></script>
+
+    <script>
+        (function () {
+            ele = document.getElementById('heart1');
+
+            // Setting value to property
+            ele.isChecked = false;
+
+            // Getting value from property
+            document.getElementById("val").innerHTML = ele.isChecked;
+
+            // Invoking method
+            console.log(ele.getValue());
+
+            // Setting Event Listener
+            ele.addEventListener('heart-event', (event) => {
+                document.getElementById("val").innerHTML = event.detail;
+            });
+        })();
+    </script>
+
+
+</body>
+
+</html>
